@@ -109,8 +109,11 @@ body {
         </div>
         <div class="card-body">
           <div class="mb-3">
-            <label class="form-label">Upload CSV/Excel</label>
-            <input type="file" class="form-control" id="contactsFile" accept=".csv,.xlsx">
+            <label class="form-label">Upload CSV/Excel/TXT</label>
+            <input type="file" class="form-control" id="contactsFile" accept=".csv,.xlsx,.txt">
+            <small class="form-text text-muted">
+                Formatos suportados: CSV, Excel (.xlsx) ou TXT (um email por linha)
+            </small>
           </div>
           <div id="csvPreview" class="table-responsive">
             <!-- Preview será mostrado aqui -->
@@ -229,36 +232,49 @@ document.getElementById('contactsFile').addEventListener('change', function(e) {
     const file = e.target.files[0];
     const reader = new FileReader();
 
-    reader.onload = function(e) {
-        const data = new Uint8Array(e.target.result);
-        const workbook = XLSX.read(data, {type: 'array'});
-        
-        // Pega a primeira planilha
-        const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
-        contacts = XLSX.utils.sheet_to_json(firstSheet);
+    // Handle different file types
+    if (file.name.endsWith('.txt')) {
+        reader.onload = function(e) {
+            const content = e.target.result;
+            const lines = content.split(/\r?\n/).filter(line => line.trim());
+            contacts = lines.map(email => ({ email: email.trim() }));
 
-        // Só atualiza se houver contatos
-        if (contacts && contacts.length > 0) {
-            updateContactsPreview();
-            updateTotalCount();
-        } else {
-            Swal.fire('Erro', 'Nenhum contato encontrado no arquivo!', 'error');
-        }
-    };
+            if (contacts && contacts.length > 0) {
+                updateContactsPreview();
+                updateTotalCount();
+            } else {
+                Swal.fire('Erro', 'Nenhum contato encontrado no arquivo!', 'error');
+            }
+        };
+        reader.readAsText(file);
+    } else {
+        // Existing CSV/Excel handling
+        reader.onload = function(e) {
+            try {
+                const data = new Uint8Array(e.target.result);
+                const workbook = XLSX.read(data, {type: 'array'});
+                const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+                contacts = XLSX.utils.sheet_to_json(firstSheet);
 
-    reader.onerror = function() {
-        Swal.fire('Erro', 'Erro ao ler o arquivo!', 'error');
-    };
-
-    reader.readAsArrayBuffer(file);
+                if (contacts && contacts.length > 0) {
+                    updateContactsPreview();
+                    updateTotalCount();
+                } else {
+                    Swal.fire('Erro', 'Nenhum contato encontrado no arquivo!', 'error');
+                }
+            } catch (error) {
+                Swal.fire('Erro', 'Erro ao processar arquivo!', 'error');
+            }
+        };
+        reader.readAsArrayBuffer(file);
+    }
 });
 
 // Função para atualizar preview dos contatos
 function updateContactsPreview() {
     const preview = document.getElementById('csvPreview');
     
-    // Verifica se há contatos e se o primeiro contato existe
-    if (!contacts || !contacts.length || !contacts[0]) {
+    if (!contacts || !contacts.length) {
         preview.innerHTML = '<div class="alert alert-warning">Nenhum contato para exibir</div>';
         return;
     }
@@ -282,6 +298,7 @@ function updateContactsPreview() {
     });
 
     html += '</tbody></table>';
+    html += `<div class="alert alert-info mt-2">Total de ${contacts.length} contatos carregados</div>`;
     preview.innerHTML = html;
 }
 
