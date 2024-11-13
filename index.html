@@ -1,238 +1,160 @@
-<html><head><base href="/" />
+<html><head><base href="">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CartÃ£o Digital - Marketing Moderno</title>
 <style>
-:root {
-  --neon-blue: #00f3ff;
-  --neon-red: #ff1f1f;
-  --cold-blue: #0066cc;
-  --warm-red: #ff4444;
-}
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
 
-body {
-  margin: 0;
-  padding: 0;
-  background: #001220;
-  font-family: 'Arial', sans-serif;
-  color: white;
-  min-height: 100vh;
-  overflow-x: hidden;
-  line-height: 1.6;
-}
+    body {
+        background: #0a0a0a;
+        color: white;
+        overflow-x: hidden;
+    }
 
-.container {
-  max-width: 100%;
-  padding: 20px;
-  text-align: center;
-}
+    .container {
+        max-width: 100%;
+        padding: 20px;
+    }
 
-.logo-container {
-  position: relative;
-  margin: 20px auto;
-  width: 150px;
-  height: 150px;
-  animation: pulse 2s infinite;
-}
+    .header {
+        text-align: center;
+        margin-bottom: 30px;
+        animation: neonPulse 1.5s infinite;
+    }
 
-.company-name {
-  font-size: 2em;
-  font-weight: bold;
-  margin: 20px 0;
-  text-shadow: 0 0 10px var(--neon-blue),
-               0 0 20px var(--neon-blue),
-               0 0 30px var(--neon-blue);
-  animation: flicker 3s infinite;
-  letter-spacing: 1px;
-}
+    @keyframes neonPulse {
+        0% { text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff; }
+        50% { text-shadow: 0 0 15px #00ffff, 0 0 25px #00ffff, 0 0 35px #00ffff; }
+        100% { text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff; }
+    }
 
-.services {
-  background: rgba(0, 30, 60, 0.8);
-  padding: 20px;
-  border-radius: 10px;
-  margin: 20px auto;
-  max-width: 800px;
-  border: 1px solid var(--neon-blue);
-  box-shadow: 0 0 15px var(--neon-blue);
-}
+    .card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 20px;
+        margin: 15px 0;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+    }
 
-.service-category {
-  margin: 20px 0;
-  text-align: left;
-}
+    .benefits {
+        display: grid;
+        gap: 15px;
+    }
 
-.service-category h3 {
-  color: var(--neon-blue);
-  margin-bottom: 10px;
-  font-size: 1.3em;
-}
+    .benefit-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 
-.service-list {
-  list-style: none;
-  padding: 0;
-}
+    .black-friday {
+        background: linear-gradient(45deg, #ff0000, #ff00ff);
+        padding: 20px;
+        border-radius: 15px;
+        margin: 20px 0;
+        text-align: center;
+        animation: blackFridayGlow 2s infinite;
+    }
 
-.service-list li {
-  margin: 10px 0;
-  padding: 12px;
-  background: rgba(0, 243, 255, 0.1);
-  border-radius: 5px;
-  font-size: 1.1em;
-}
+    @keyframes blackFridayGlow {
+        0% { box-shadow: 0 0 10px #ff0000; }
+        50% { box-shadow: 0 0 20px #ff00ff; }
+        100% { box-shadow: 0 0 10px #ff0000; }
+    }
 
-.whatsapp-button {
-  display: inline-block;
-  background: #25D366;
-  color: white;
-  padding: 15px 30px;
-  border-radius: 25px;
-  text-decoration: none;
-  margin: 20px 0;
-  font-weight: bold;
-  font-size: 1.2em;
-  box-shadow: 0 0 15px #25D366;
-  animation: pulse 2s infinite;
-}
+    .cta-button {
+        background: linear-gradient(45deg, #25d366, #128C7E);
+        color: white;
+        padding: 15px 30px;
+        border-radius: 25px;
+        text-decoration: none;
+        display: inline-block;
+        margin: 20px 0;
+        font-weight: bold;
+        text-transform: uppercase;
+        animation: ctaPulse 2s infinite;
+    }
 
-.info {
-  background: rgba(0, 30, 60, 0.8);
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 20px;
-  border: 1px solid var(--neon-blue);
-  box-shadow: 0 0 15px var(--neon-blue);
-}
-
-.info h2 {
-  font-size: 1.5em;
-  margin-bottom: 15px;
-}
-
-.info p {
-  font-size: 1.1em;
-  margin: 10px 0;
-}
-
-.fan {
-  position: fixed;
-  opacity: 0.1;
-  pointer-events: none;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
-@keyframes flicker {
-  0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
-    opacity: 1;
-  }
-  20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
-    opacity: 0.4;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .company-name {
-    font-size: 1.8em;
-  }
-  
-  .service-list li {
-    font-size: 1em;
-  }
-  
-  .whatsapp-button {
-    font-size: 1.1em;
-    padding: 12px 24px;
-  }
-}
+    @keyframes ctaPulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
 </style>
 </head>
 <body>
+    <div class="container">
+        <div class="header">
+            <h1>CriaÃ§Ã£o de CartÃ£o Digital</h1>
+            <p>Modernize sua presenÃ§a profissional</p>
+        </div>
 
-<div class="container">
-  <div class="logo-container">
-    <img src="logo.jpg" alt="RESET AR CONDICIONADO logo - snowflake with wrench" width="150" height="150">
-  </div>
+        <div class="card">
+            <h2>Por que ter um CartÃ£o Digital?</h2>
+            <div class="benefits">
+                <div class="benefit-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="#00ffff">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                    </svg>
+                    <p>Economia com impressÃµes - Nunca mais gaste com cartÃµes fÃ­sicos!</p>
+                </div>
+                <div class="benefit-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="#00ffff">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                    </svg>
+                    <p>Compartilhamento instantÃ¢neo via WhatsApp</p>
+                </div>
+                <div class="benefit-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="#00ffff">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                    </svg>
+                    <p>Com direito a 3 atualização sem custo adicional</p>
+                </div>
+            </div>
+        </div>
 
-  <h1 class="company-name">RESET AR CONDICIONADO</h1>
+        <div class="black-friday">
+            <h2>ðŸ”¥ OFERTA BLACK FRIDAY ðŸ”¥</h2>
+            <h3>APENAS R$ 250,00</h3>
+            <p>Garanta jÃ¡ seu cartÃ£o digital profissional!</p>
+        </div>
 
-  <div class="services">
-    <div class="service-category">
-      <h3>Instalação</h3>
-      <ul class="service-list">
-        <li>ELGIN</li>
-        <li>Fujitsu</li>
-        <li>Electrolux</li>
-        <li>LG</li>
-        <li>HOMECO</li>
-        <li>Gree</li>
-        <li>Springer</li>
-      </ul>
+        <div class="card">
+            <h2>Fale com o Especialista</h2>
+            <p>Clayton Silva estÃ¡ pronto para criar seu cartÃ£o digital personalizado!</p>
+            <a href="https://wa.me/5513974173380" class="cta-button">
+                Chamar no WhatsApp
+            </a>
+        </div>
     </div>
 
-    <div class="service-category">
-      <h3>Manutenção</h3>
-      <ul class="service-list">
-        <li>Manutenção geral</li>
-        <li>Consertos</li>
-      </ul>
-    </div>
+    <script>
+        // Adiciona efeito de hover aos cards
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseover', () => {
+                card.style.transform = 'scale(1.02)';
+                card.style.transition = 'transform 0.3s ease';
+            });
+            card.addEventListener('mouseout', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
 
-    <div class="service-category">
-      <h3>Outros Serviços</h3>
-      <ul class="service-list">
-        <li>Higienização</li>
-        <li>Mudança de local</li>
-        <li>Carga de gás</li>
-      </ul>
-    </div>
-
-    <div class="service-category">
-      <h3>Promoções</h3>
-      <ul class="service-list">
-        <li>Promoção especial para limpeza em Split</li>
-      </ul>
-    </div>
-  </div>
-
-  <a href="https://wa.me/5513974173380?text=Gostaria%20de%20fazer%20um%20orçamento%20com%20a%20empresa%20RESET%20AR%20CONDICIONADO" class="whatsapp-button">
-    Solicitar Orçamento via WhatsApp
-  </a>
-
-  <div class="info">
-    <h2>Informações de Atendimento</h2>
-    <p>Atendemos todas as regiões de São Paulo</p>
-    <p>Falar com Gustavo ou Viviane</p>
-  </div>
-</div>
-
-<script>
-function createFan() {
-  const fan = document.createElement('div');
-  fan.className = 'fan';
-  fan.innerHTML = `
-    <svg width="50" height="50" viewBox="0 0 100 100">
-      <g fill="rgba(255,255,255,0.1)">
-        <path d="M50 20 L60 50 L50 80 L40 50 Z">
-          <animateTransform
-            attributeName="transform"
-            type="rotate"
-            from="0 50 50"
-            to="360 50 50"
-            dur="4s"
-            repeatCount="indefinite"/>
-        </path>
-      </g>
-    </svg>
-  `;
-  fan.style.left = Math.random() * window.innerWidth + 'px';
-  fan.style.top = Math.random() * window.innerHeight + 'px';
-  document.body.appendChild(fan);
-}
-
-for (let i = 0; i < 10; i++) {
-  createFan();
-}
-</script>
-
-</body></html>
+        // AnimaÃ§Ã£o suave ao scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
